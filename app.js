@@ -1,0 +1,36 @@
+const express = require('express');
+const morgan = require('morgan');
+const mongoose = require('mongoose');
+const router = require('./routes');
+
+const app = express();
+
+// Set EJS as the view engine
+app.set('view engine', 'ejs');
+
+// Middleware setup
+app.use(morgan('dev'));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use('/contacts', router);
+
+// Base route
+app.get('/', (req, res) => {
+  res.json('imran ali');
+});
+
+// Database connection and server setup
+const PORT = process.env.PORT || 3000;
+mongoose
+  .connect('mongodb://127.0.0.1:27017/contacts_db', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,  // Add this for better connection handling
+  })
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.error('Database connection error:', error);
+  });
