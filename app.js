@@ -16,7 +16,11 @@ app.use('/contacts', router);
 
 // Base route
 app.get('/', (req, res) => {
-  return 'hello yaar'
+  res.json({
+    message: 'Welcome to the Contact Management App',
+    description: 'Use this app to manage and organize your contacts efficiently.',
+    instructions: 'Navigate to /contacts to view, add, update, or delete your contacts.'
+  });
 });
 
 // Database connection and server setup
