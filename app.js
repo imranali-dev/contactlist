@@ -6,6 +6,10 @@ const router = require('./routes');
 const app = express();
 
 // Set EJS as the view engine
+const path = require('path');
+
+// Set the views directory
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // Middleware setup
