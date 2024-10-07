@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 // Database connection and server setup
 const PORT = process.env.PORT || 3000;
 mongoose
-  .connect('mongodb://127.0.0.1:27017/contacts_db', {
+  .connect('mongodb+srv://codewithcodesandbox11:Imranali13@cluster0.ma4owvq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
     useNewUrlParser: true,
     useUnifiedTopology: true,  // Add this for better connection handling
   })
