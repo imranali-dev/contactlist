@@ -22,6 +22,10 @@ app.get('/', (req, res) => {
     instructions: 'Navigate to /contacts to view, add, update, or delete your contacts.'
   });
 });
+app.use((req, res, next) => {
+  res.setHeader("Content-Security-Policy", "script-src 'self' https://vercel.live");
+  next();
+});
 
 // Database connection and server setup
 const PORT = process.env.PORT || 3000;
