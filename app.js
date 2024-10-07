@@ -16,7 +16,7 @@ app.use('/contacts', router);
 
 // Base route
 app.get('/', (req, res) => {
-  res.json('imran ali');
+  return 'hello yaar'
 });
 
 // Database connection and server setup
