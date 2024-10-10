@@ -2,11 +2,22 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const router = require('./routes');
-
+const cors = require('cors');
 const app = express();
 
 // Set EJS as the view engine
 const path = require('path');
+
+// Use the CORS middleware to allow all origins and methods
+app.use(cors({
+  origin: '*',  // Allow all origins
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow all methods
+  allowedHeaders: ['Content-Type', 'Authorization'],  // Allow specific headers
+  credentials: true, // If you need to allow credentials (cookies)
+}));
+
+// Enable pre-flight for all routes
+app.options('*', cors());  // Handle pre-flight requests
 
 // Set the views directory
 app.set('views', path.join(__dirname, 'views'));
@@ -26,6 +37,7 @@ app.get('/', (req, res) => {
     instructions: 'Navigate to /contacts to view, add, update, or delete your contacts.'
   });
 });
+
 app.use((req, res, next) => {
   res.setHeader("Content-Security-Policy", "script-src 'self' https://vercel.live");
   next();
@@ -34,7 +46,7 @@ app.use((req, res, next) => {
 // Database connection and server setup
 const PORT = process.env.PORT || 3000;
 mongoose
-  .connect('mongodb+srv://codewithcodesandbox11:Imranali13@cluster0.ma4owvq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+  .connect('mongodb://127.0.0.1:27017/', {
     useNewUrlParser: true,
     useUnifiedTopology: true,  // Add this for better connection handling
   })
