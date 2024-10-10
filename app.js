@@ -9,16 +9,17 @@ const app = express();
 const path = require('path');
 
 // Use the CORS middleware to allow all origins and methods
+
+// Use the CORS middleware to allow all origins and methods
 app.use(cors({
-  origin: '*',  // Allow all origins
+  origin: 'https://chic-frangollo-057e8b.netlify.app', // Specify your frontend URL
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow all methods
-  allowedHeaders: ['Content-Type', 'Authorization'],  // Allow specific headers
-  credentials: true, // If you need to allow credentials (cookies)
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow specific headers
+  credentials: true // If you need to allow credentials (cookies)
 }));
 
 // Enable pre-flight for all routes
 app.options('*', cors());  // Handle pre-flight requests
-
 // Set the views directory
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -42,6 +43,7 @@ app.use((req, res, next) => {
   res.setHeader("Content-Security-Policy", "script-src 'self' https://vercel.live");
   next();
 });
+
 
 // Database connection and server setup
 const PORT = process.env.PORT || 3000;
