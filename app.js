@@ -12,14 +12,14 @@ const path = require('path');
 
 // Use the CORS middleware to allow all origins and methods
 app.use(cors({
-  origin: 'https://chic-frangollo-057e8b.netlify.app', // Specify your frontend URL
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow all methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allow specific headers
-  credentials: true // If you need to allow credentials (cookies)
+  origin: 'https://chic-frangollo-057e8b.netlify.app',  // Allow requests from your Netlify frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow necessary methods
+  allowedHeaders: ['Content-Type', 'Authorization'],    // Allow specific headers
+  credentials: true                                     // Allow credentials if needed (cookies)
 }));
 
-// Enable pre-flight for all routes
-app.options('*', cors());  // Handle pre-flight requests
+// Handle pre-flight requests
+app.options('*', cors());  // Handle pre-flight requests for all routes
 // Set the views directory
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
