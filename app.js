@@ -20,9 +20,7 @@ app.use(cors({
 
 // Handle pre-flight requests
 app.options('*', cors());  // Handle pre-flight requests for all routes
-// Set the views directory
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+
 
 // Middleware setup
 app.use(morgan('dev'));
@@ -48,7 +46,7 @@ app.use((req, res, next) => {
 // Database connection and server setup
 const PORT = process.env.PORT || 3000;
 mongoose
-  .connect('mongodb://127.0.0.1:27017/', {
+  .connect('mongodb+srv://codewithcodesandbox11:<db_password>@cluster0.ma4owvq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
     useNewUrlParser: true,
     useUnifiedTopology: true,  // Add this for better connection handling
   })
