@@ -19,7 +19,7 @@ app.use(cors({
 }));
 
 // Handle pre-flight requests
-app.options('*', cors());  // Handle pre-flight requests for all routes
+app.use(cors());
 
 
 // Middleware setup
