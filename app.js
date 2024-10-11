@@ -46,7 +46,7 @@ app.use((req, res, next) => {
 // Database connection and server setup
 const PORT = process.env.PORT || 3000;
 mongoose
-  .connect('mongodb+srv://codewithcodesandbox11:<db_password>@cluster0.ma4owvq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+  .connect('mongodb+srv://codewithcodesandbox11:Imranali13@cluster0.ma4owvq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
     useNewUrlParser: true,
     useUnifiedTopology: true,  // Add this for better connection handling
   })
