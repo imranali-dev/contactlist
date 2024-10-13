@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const router = require('./routes');
 const cors = require('cors');
 const app = express();
+const songRoutes = require('./routers/song');
 
 // Set EJS as the view engine
 const path = require('path');
@@ -27,7 +28,7 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use('/contacts', router);
-
+app.use('/api', songRoutes);
 // Base route
 app.get('/', (req, res) => {
   res.json({
